@@ -4,7 +4,7 @@ using UnityEngine;
 public class CreepHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
-    private float currentHealth;
+    public float currentHealth;
     public delegate void EnemyDestroyed();
     public event EnemyDestroyed OnDestroyed;
 
@@ -26,6 +26,7 @@ public class CreepHealth : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("Creep died.");
         OnDestroyed?.Invoke();
         Destroy(gameObject);
     }
