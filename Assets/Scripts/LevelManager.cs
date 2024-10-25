@@ -5,6 +5,10 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager main;
+<<<<<<< HEAD
+=======
+    public Transform startPoint;
+>>>>>>> devhoang
     public Transform[] path;
 
     private void Awake()
