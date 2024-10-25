@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public int startingEnemies = 2;
     public float timeBetweenWaves = 30f;
     public float spawnDelay = 5f;
+    public int maxWaves = 5;
 
     private int currentWave = 1;
     private int enemiesInWave;
@@ -22,26 +23,44 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        for (int i = 0; i < enemiesInWave; i++)
+        while (currentWave <= maxWaves)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnDelay);
-        }
+            Debug.Log($"Starting wave {currentWave} with {enemiesInWave} enemies.");
 
-        while (remainingEnemies > 0)
-        {
-            yield return null;
-        }
+            remainingEnemies = enemiesInWave;
 
-        enemiesInWave += 2;
-        StartCoroutine(SpawnWave());
+            for (int i = 0; i < enemiesInWave; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(spawnDelay);
+            }
+
+            Debug.Log($"All enemies for wave {currentWave} spawned. Waiting for destruction...");
+
+            while (remainingEnemies > 0)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"Wave {currentWave} complete. Moving to next wave...");
+
+            enemiesInWave += 2;
+            currentWave++;
+
+            if (currentWave > maxWaves)
+            {
+                Debug.Log("Max number of waves reached.");
+                yield break;
+            }
+
+            yield return new WaitForSeconds(timeBetweenWaves);
+        }
     }
 
     void SpawnEnemy()
     {
         GameObject enemy = Instantiate(Enemy, spawnPoint.position, Quaternion.identity);
+        enemy.SetActive(true);
 
         CreepMovement creepMovement = enemy.GetComponent<CreepMovement>();
         if (creepMovement != null && pathPoints.Length > 0)
@@ -53,14 +72,14 @@ public class EnemySpawner : MonoBehaviour
         if (creepHealth != null)
         {
             creepHealth.OnDestroyed += OnEnemyDestroyed;
-            remainingEnemies++;
+            Debug.Log($"Enemy spawned. Remaining enemies: {remainingEnemies}");
         }
     }
 
     void OnEnemyDestroyed()
     {
         remainingEnemies--;
-        DropMoney();
+        Debug.Log($"Enemy destroyed. Remaining enemies: {remainingEnemies}");
     }
 
     void DropMoney()

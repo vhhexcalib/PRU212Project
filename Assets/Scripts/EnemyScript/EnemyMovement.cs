@@ -34,7 +34,27 @@ public class CreepMovement : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Log for debugging
+            Debug.Log("Creep reached the final waypoint, waiting for collision with Base.");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Base"))
+        {
+            Debug.Log("Creep collided with Base.");
+
+            CreepHealth creepHealth = GetComponent<CreepHealth>();
+            if (creepHealth != null)
+            {
+                // Apply damage to the creep, effectively killing it
+                creepHealth.TakeDamage(100f);
+                Debug.Log("Creep took damage from Base collision. Current health: " + creepHealth.currentHealth);
+            }
+            else
+            {
+                Debug.LogError("Creep has no CreepHealth component!");
+            }
         }
     }
 }
