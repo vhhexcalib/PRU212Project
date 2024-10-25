@@ -23,35 +23,38 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        Debug.Log($"Starting wave {currentWave} with {enemiesInWave} enemies.");
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        if (currentWave > maxWaves)
+        while (currentWave <= maxWaves)
         {
-            Debug.Log("Max number of waves reached.");
-            yield break;
+            Debug.Log($"Starting wave {currentWave} with {enemiesInWave} enemies.");
+
+            remainingEnemies = enemiesInWave;
+
+            for (int i = 0; i < enemiesInWave; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(spawnDelay);
+            }
+
+            Debug.Log($"All enemies for wave {currentWave} spawned. Waiting for destruction...");
+
+            while (remainingEnemies > 0)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"Wave {currentWave} complete. Moving to next wave...");
+
+            enemiesInWave += 2;
+            currentWave++;
+
+            if (currentWave > maxWaves)
+            {
+                Debug.Log("Max number of waves reached.");
+                yield break;
+            }
+
+            yield return new WaitForSeconds(timeBetweenWaves);
         }
-
-        remainingEnemies = enemiesInWave;
-
-        for (int i = 0; i < enemiesInWave; i++)
-        {
-            SpawnEnemy();
-            yield return new WaitForSeconds(spawnDelay);
-        }
-
-        Debug.Log($"All enemies for wave {currentWave} spawned. Waiting for destruction...");
-
-        while (remainingEnemies > 0)
-        {
-            yield return null;
-        }
-
-        Debug.Log($"Wave {currentWave} complete. Moving to next wave...");
-
-        enemiesInWave += 2;
-        currentWave++;
-        StartCoroutine(SpawnWave());
     }
 
     void SpawnEnemy()
@@ -77,7 +80,6 @@ public class EnemySpawner : MonoBehaviour
     {
         remainingEnemies--;
         Debug.Log($"Enemy destroyed. Remaining enemies: {remainingEnemies}");
-        //DropMoney();
     }
 
     void DropMoney()

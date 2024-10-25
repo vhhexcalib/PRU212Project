@@ -30,4 +30,14 @@ public class CreepHealth : MonoBehaviour
         OnDestroyed?.Invoke();
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Base"))
+        {
+            Debug.Log("Creep reached the base and died.");
+            OnDestroyed?.Invoke(); 
+            Destroy(gameObject);
+        }
+    }
 }

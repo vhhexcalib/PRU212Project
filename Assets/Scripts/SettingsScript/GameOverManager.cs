@@ -27,7 +27,7 @@ public class GameOverManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        SceneManager.LoadSceneAsync(0);
         Debug.Log("Quit game");
     }
 }

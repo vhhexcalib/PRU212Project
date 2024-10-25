@@ -3,8 +3,15 @@ using UnityEngine;
 public class BaseHealth : MonoBehaviour
 {
     public int health = 10;
+    public int maxHealth = 10;
     public HealthUI healthUI;
     public GameOverManager gameOverManager;
+
+    private void Start()
+    {
+        health = maxHealth;
+        healthUI.UpdateHealth(health);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -18,7 +25,7 @@ public class BaseHealth : MonoBehaviour
         }
     }
 
-    void DestroyBase()
+    private void DestroyBase()
     {
         Debug.Log("Base destroyed!");
         gameOverManager.GameOver();
