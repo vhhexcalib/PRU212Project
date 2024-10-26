@@ -27,7 +27,7 @@ public class Tower : MonoBehaviour
 
     void FindTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Creep");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 

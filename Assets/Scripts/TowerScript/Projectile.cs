@@ -3,6 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 5f;
+    public float damage = 10f;
     private Transform target;
 
     public void Seek(Transform _target)
@@ -29,7 +30,11 @@ public class Projectile : MonoBehaviour
 
     void HitTarget()
     {
-        // Damage or destroy the enemy here
+        Enemy enemy = target.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 }
