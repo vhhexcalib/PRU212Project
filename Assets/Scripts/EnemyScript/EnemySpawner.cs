@@ -45,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             DisplayMessage($"Wave {currentWave} complete. Moving to next wave...");
+            GameManager.instance.WaveCompleted();
 
             enemiesInWave += 2;
             currentWave++;
@@ -52,6 +53,7 @@ public class EnemySpawner : MonoBehaviour
             if (currentWave > maxWaves)
             {
                 DisplayMessage("Max number of waves reached.");
+                GameManager.instance.SetAllWavesCompleted();
                 yield break;
             }
 
@@ -63,6 +65,8 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemy = Instantiate(Enemy, spawnPoint.position, Quaternion.identity);
         enemy.SetActive(true);
+
+        GameManager.instance.RegisterEnemy();
 
         CreepMovement creepMovement = enemy.GetComponent<CreepMovement>();
         if (creepMovement != null && pathPoints.Length > 0)
@@ -81,6 +85,9 @@ public class EnemySpawner : MonoBehaviour
     void OnEnemyDestroyed()
     {
         remainingEnemies--;
+
+        GameManager.instance.EnemyKilled();
+
         DisplayMessage($"Enemy destroyed. Remaining enemies: {remainingEnemies}");
     }
 

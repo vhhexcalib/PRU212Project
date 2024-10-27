@@ -20,6 +20,9 @@ public class Projectile : MonoBehaviour
         }
 
         Vector2 direction = (target.position - transform.position).normalized;
+        // Rotate the arrow to face the direction of the target
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
         if (Vector2.Distance(transform.position, target.position) < 0.2f)
@@ -30,7 +33,7 @@ public class Projectile : MonoBehaviour
 
     void HitTarget()
     {
-        Enemy enemy = target.GetComponent<Enemy>();
+        CreepHealth enemy = target.GetComponent<CreepHealth>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
