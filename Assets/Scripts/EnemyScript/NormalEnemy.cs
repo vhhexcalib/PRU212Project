@@ -1,8 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     public int damage = 1;
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

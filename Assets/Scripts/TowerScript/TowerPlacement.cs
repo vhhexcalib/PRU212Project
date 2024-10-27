@@ -3,67 +3,19 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     public GameObject towerPrefab;
-    private GameObject selectedTower;
-    private bool isPlacingTower = false;
-    private TowerSpot selectedSpot;
 
-    void Update()
+    public void PlaceTowerAtSpot(TowerSpot spot)
     {
-        if (isPlacingTower)
+        if (towerPrefab != null && !spot.isOccupied && GameManager.instance.CanPlaceTower())
         {
-            if (selectedSpot == null) return;
-
-            Vector3 placementPosition = selectedSpot.transform.position;
-            selectedTower.transform.position = placementPosition;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                PlaceTower();
-            }
+            Instantiate(towerPrefab, spot.transform.position, Quaternion.identity);
+            spot.isOccupied = true;
+            GameManager.instance.UseTower();
+            Debug.Log("Placed a tower at: " + spot.name);
         }
-    }
-
-    public void StartPlacingTower()
-    {
-        if (towerPrefab != null)
+        else
         {
-            selectedTower = Instantiate(towerPrefab);
-            isPlacingTower = true;
-        }
-    }
-
-    void PlaceTower()
-    {
-        if (selectedSpot != null)
-        {
-            isPlacingTower = false;
-            selectedSpot.isOccupied = true;
-            selectedSpot = null;
-        }
-    }
-
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("TowerSpot"))
-        {
-            TowerSpot spot = other.GetComponent<TowerSpot>();
-            if (spot != null && !spot.isOccupied)
-            {
-                selectedSpot = spot;
-            }
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("TowerSpot"))
-        {
-            TowerSpot spot = other.GetComponent<TowerSpot>();
-            if (spot == selectedSpot)
-            {
-                selectedSpot = null;
-            }
+            Debug.LogWarning("Cannot place tower here. Either spot is occupied or no towers available.");
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7179249361787901147}
   - component: {fileID: 3411482282992369116}
   - component: {fileID: 3317630299330640315}
-  - component: {fileID: 1167535374305711739}
+  - component: {fileID: -7171966949853979548}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Creep
@@ -171,7 +171,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 8
+  speed: 2
 --- !u!114 &3317630299330640315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3827e0a0da3c2341944106c2a5e32ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 50
---- !u!114 &1167535374305711739
+  maxHealth: 20
+  currentHealth: 20
+--- !u!114 &-7171966949853979548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

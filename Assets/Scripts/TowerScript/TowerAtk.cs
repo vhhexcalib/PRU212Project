@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public float attackRange = 5f;
+    public float attackRange = 3f;
     public float fireRate = 1f;
     private float fireCooldown = 0f;
 
@@ -27,7 +27,7 @@ public class Tower : MonoBehaviour
 
     void FindTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Creep");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
@@ -53,6 +53,12 @@ public class Tower : MonoBehaviour
 
     void Shoot()
     {
+        if (firePoint == null)
+        {
+            Debug.LogError("FirePoint is not assigned!");
+            return;
+        }
+
         GameObject projectile = Instantiate(Arrow, firePoint.position, firePoint.rotation);
         Projectile projScript = projectile.GetComponent<Projectile>();
 
@@ -60,5 +66,11 @@ public class Tower : MonoBehaviour
         {
             projScript.Seek(target);
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
