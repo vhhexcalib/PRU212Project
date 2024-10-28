@@ -202,8 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &18985405
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &481118075
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &497033835
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!4 &531789828
 Transform:
   m_ObjectHideFlags: 0
@@ -1803,7 +1803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &568044406
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1884,8 +1884,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &601497949
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2102,7 +2102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &620489943
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2987,8 +2987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &735129888
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3113,7 +3113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &752489184
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4448,7 +4448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -795, y: 452}
+  m_AnchoredPosition: {x: -761.6, y: 436}
   m_SizeDelta: {x: 2265.814, y: 723.2087}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1226816511
@@ -4638,8 +4638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1268944653
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5165,7 +5165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1338340993
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5331,7 +5331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1353104268
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15660,8 +15660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1381679005
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -15961,7 +15961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1408864426
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16344,7 +16344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1513979603
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16806,8 +16806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
-  towerPlacement: {fileID: 0}
+  isOccupied: 0
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1587851198
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16889,7 +16889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &1608078986
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -18653,7 +18653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
-  towerPlacement: {fileID: 0}
+  towerPlacement: {fileID: 357860296}
 --- !u!58 &2033369383
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19111,7 +19111,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1515573410}
-  - {fileID: 1611303751}
   - {fileID: 6845005}
   - {fileID: 148043399}
   - {fileID: 1574103840}
@@ -19124,3 +19123,4 @@ SceneRoots:
   - {fileID: 612034174}
   - {fileID: 531789828}
   - {fileID: 1226816513}
+  - {fileID: 1611303751}
