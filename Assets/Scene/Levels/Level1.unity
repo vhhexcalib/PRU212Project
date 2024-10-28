@@ -10995,6 +10995,7 @@ MonoBehaviour:
   baseHealth: {fileID: 694738611}
   availableTowers: 1
   towerPlacementText: {fileID: 1479744227}
+  audioManager: {fileID: 2077149743}
 --- !u!4 &531111722
 Transform:
   m_ObjectHideFlags: 0
@@ -12049,9 +12050,9 @@ MonoBehaviour:
   - {fileID: 212946810}
   - {fileID: 490217709}
   startingEnemies: 2
-  timeBetweenWaves: 10
+  timeBetweenWaves: 2
   spawnDelay: 2
-  maxWaves: 5
+  maxWaves: 2
   debugDisplay: {fileID: 381608501}
 --- !u!4 &848926510
 Transform:
@@ -16651,7 +16652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077149742}
-  - component: {fileID: 2077149741}
+  - component: {fileID: 2077149743}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -16659,21 +16660,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2077149741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077149740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae5e1c6ad7a741428c3b2464e577a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSource: {fileID: 1516550751}
-  SFXSource: {fileID: 1596759528}
-  background: {fileID: 8300000, guid: 611aac06ce314ed45a748ccfbb5bd3e9, type: 3}
 --- !u!4 &2077149742
 Transform:
   m_ObjectHideFlags: 0
@@ -16691,6 +16677,26 @@ Transform:
   - {fileID: 1596759529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2077149743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077149740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0121f7365440f7c4cb3e6a173cf6e17c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 1516550751}
+  SFXSource: {fileID: 1596759528}
+  background: {fileID: 8300000, guid: 611aac06ce314ed45a748ccfbb5bd3e9, type: 3}
+  shooting: {fileID: 0}
+  archershooting: {fileID: 8300000, guid: 45407806c88a8df43a300a9d0e4b3d72, type: 3}
+  enemydie: {fileID: 8300000, guid: 9f59479338e86b34087ed5e674bf3b44, type: 3}
+  failscene: {fileID: 0}
+  passscene: {fileID: 0}
 --- !u!1 &2122251837
 GameObject:
   m_ObjectHideFlags: 0
