@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8012051927961506390}
   - component: {fileID: 5690206422583022682}
   - component: {fileID: 3281360681081689249}
-  - component: {fileID: -8435332647404042177}
   m_Layer: 12
   m_Name: Level2Enemies
   m_TagString: Untagged
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 7990003ecdd5f5a43bde8b0526ca7b78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,7 +144,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dc76ef8b2d8724b80e7ad7d2ac7467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
 --- !u!114 &3281360681081689249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,17 +176,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints: []
-  speed: 3
---- !u!114 &-8435332647404042177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5841809675001973362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d16a60e6e0f9284091093562bcad0fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
+  speed: 4
