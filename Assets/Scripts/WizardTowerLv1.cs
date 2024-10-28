@@ -8,7 +8,6 @@ public class WizardTowerLv1 : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
-    [SerializeField] private AudioManagerScene audioManager; 
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
@@ -17,6 +16,15 @@ public class WizardTowerLv1 : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire;
+
+    // Reference to AudioManagerScene
+    private AudioManagerScene audioManager;
+
+    private void Start()
+    {
+        // Find the AudioManagerScene object in the scene
+        audioManager = FindObjectOfType<AudioManagerScene>();
+    }
 
     private void Update()
     {
@@ -43,8 +51,14 @@ public class WizardTowerLv1 : MonoBehaviour
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
 
-        // Play the shooting sound
-        audioManager.SFXSource.PlayOneShot(audioManager.shooting);
+        if (audioManager != null && audioManager.SFXSource != null && audioManager.shooting != null)
+        {
+            audioManager.SFXSource.PlayOneShot(audioManager.shooting);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManagerScene, SFXSource or archershooting clip is not assigned.");
+        }
     }
 
     private void RotateTowardsTarget()

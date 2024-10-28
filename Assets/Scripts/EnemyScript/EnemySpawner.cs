@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy;
+    public GameObject Boss; 
     public Transform spawnPoint;
     public Transform[] pathPoints;
     public int startingEnemies = 2;
@@ -35,6 +36,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnEnemy();
                 yield return new WaitForSeconds(spawnDelay);
+            }
+            if (currentWave == maxWaves)
+            {
+                SpawnBoss();
             }
 
             DisplayMessage($"All enemies for wave {currentWave} spawned.");
@@ -82,7 +87,28 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void OnEnemyDestroyed()
+    void SpawnBoss()
+    {
+        GameObject boss = Instantiate(Boss, spawnPoint.position, Quaternion.identity);
+        boss.SetActive(true);
+
+        GameManager.instance.RegisterEnemy();
+
+        CreepMovement creepMovement = boss.GetComponent<CreepMovement>();
+        if (creepMovement != null && pathPoints.Length > 0)
+        {
+            creepMovement.pathPoints = pathPoints;
+        }
+
+        CreepHealth creepHealth = boss.GetComponent<CreepHealth>();
+        if (creepHealth != null)
+        {
+            creepHealth.OnDestroyed += OnEnemyDestroyed; 
+            DisplayMessage("Boss spawned!");
+        }
+    }
+
+    public void OnEnemyDestroyed()
     {
         remainingEnemies--;
 
