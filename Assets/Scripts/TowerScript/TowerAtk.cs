@@ -12,6 +12,15 @@ public class Tower : MonoBehaviour
     public Transform firePoint;
     private Transform target;
 
+    // Reference to AudioManagerScene
+    private AudioManagerScene audioManager;
+
+    private void Start()
+    {
+        // Find the AudioManagerScene object in the scene
+        audioManager = FindObjectOfType<AudioManagerScene>();
+    }
+
     void Update()
     {
         FindTarget();
@@ -59,12 +68,23 @@ public class Tower : MonoBehaviour
             return;
         }
 
+        // Instantiate arrow and make it seek the target
         GameObject projectile = Instantiate(Arrow, firePoint.position, firePoint.rotation);
         Projectile projScript = projectile.GetComponent<Projectile>();
 
         if (projScript != null)
         {
             projScript.Seek(target);
+        }
+
+        // Play the archer shooting sound effect
+        if (audioManager != null && audioManager.SFXSource != null && audioManager.archershooting != null)
+        {
+            audioManager.SFXSource.PlayOneShot(audioManager.archershooting);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManagerScene, SFXSource or archershooting clip is not assigned.");
         }
     }
 

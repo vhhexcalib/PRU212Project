@@ -8,27 +8,27 @@ public class WizardTowerLv1 : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
-
+    [SerializeField] private AudioManagerScene audioManager; 
 
     [Header("Attribute")]
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float bps =1f; // bullets per second
-
+    [SerializeField] private float bps = 1f;
 
     private Transform target;
     private float timeUntilFire;
+
     private void Update()
     {
         if (target == null || !CheckTargetIsInRange())
         {
-            FindTarget(); 
+            FindTarget();
         }
 
         if (target != null)
         {
             timeUntilFire += Time.deltaTime;
-            if(timeUntilFire >= 1/ bps)
+            if (timeUntilFire >= 1 / bps)
             {
                 Shoot();
                 timeUntilFire = 0f;
@@ -36,17 +36,20 @@ public class WizardTowerLv1 : MonoBehaviour
             RotateTowardsTarget();
         }
     }
+
     private void Shoot()
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
 
+        // Play the shooting sound
+        audioManager.SFXSource.PlayOneShot(audioManager.shooting);
     }
+
     private void RotateTowardsTarget()
     {
         float angle = Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
-
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
@@ -73,7 +76,7 @@ public class WizardTowerLv1 : MonoBehaviour
         }
         else
         {
-            target = null; 
+            target = null;
         }
     }
 
@@ -84,7 +87,6 @@ public class WizardTowerLv1 : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
     }

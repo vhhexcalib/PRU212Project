@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
 
     public TowerSpotLeft towerPlacementText;
 
+    // Reference to AudioManagerScene
+    public AudioManagerScene audioManager;
+
     private void Start()
     {
         UpdateTowerPlacementText();
@@ -42,6 +45,16 @@ public class GameManager : MonoBehaviour
     public void EnemyKilled()
     {
         enemyCount--;
+
+        // Play the enemy die sound effect
+        if (audioManager != null && audioManager.SFXSource != null && audioManager.enemydie != null)
+        {
+            audioManager.SFXSource.PlayOneShot(audioManager.enemydie);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManagerScene or SFXSource or enemydie clip is not assigned.");
+        }
 
         if (enemyCount <= 0 && allWavesCompleted && baseHealth.health > 0)
         {
