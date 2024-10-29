@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -77,16 +78,24 @@ public class Tower : MonoBehaviour
             projScript.Seek(target);
         }
 
-        // Play the archer shooting sound effect
-        if (audioManager != null && audioManager.SFXSource != null && audioManager.archershooting != null)
+        // Play sound based on tower's tag
+        if (audioManager != null && audioManager.SFXSource != null)
         {
-            audioManager.SFXSource.PlayOneShot(audioManager.archershooting);
+            if (CompareTag("Wizard") && audioManager.shooting != null)
+            {
+                audioManager.SFXSource.PlayOneShot(audioManager.shooting);
+            }
+            else if (audioManager.archershooting != null)
+            {
+                audioManager.SFXSource.PlayOneShot(audioManager.archershooting);
+            }
         }
         else
         {
-            Debug.LogWarning("AudioManagerScene, SFXSource or archershooting clip is not assigned.");
+            Debug.LogWarning("AudioManagerScene, SFXSource or sound clips are not assigned.");
         }
     }
+
 
     private void OnDrawGizmosSelected()
     {

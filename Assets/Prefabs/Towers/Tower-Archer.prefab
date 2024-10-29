@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4e238bb1c7b9f498dc0bdc7a058b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 4
+  attackRange: 5
   fireRate: 1
   Arrow: {fileID: 5029754668869378772, guid: 52abe7b5374135242b5331b46818e8a8, type: 3}
   firePoint: {fileID: 964376869252939496}

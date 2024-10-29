@@ -10190,7 +10190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
+  isOccupied: 0
   towerPlacement: {fileID: 1912918106}
 --- !u!58 &474483502
 CircleCollider2D:
@@ -11187,7 +11187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -795, y: 452}
+  m_AnchoredPosition: {x: -410, y: 243}
   m_SizeDelta: {x: 2265.814, y: 723.2087}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &704613917
@@ -11358,7 +11358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -514.9486, y: -484}
+  m_AnchoredPosition: {x: -128, y: -254}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763360035
@@ -12120,7 +12120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &868124373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12408,9 +12408,9 @@ MonoBehaviour:
   - {fileID: 1282314772}
   - {fileID: 497935625}
   startingEnemies: 2
-  timeBetweenWaves: 2
+  timeBetweenWaves: 10
   spawnDelay: 2
-  maxWaves: 2
+  maxWaves: 7
   debugDisplay: {fileID: 763360035}
 --- !u!4 &890064877
 Transform:
@@ -12472,7 +12472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
+  isOccupied: 0
   towerPlacement: {fileID: 1912918106}
 --- !u!58 &892483715
 CircleCollider2D:
@@ -12543,7 +12543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelScreen: {fileID: 1883519907}
   victoryMessage: {fileID: 1732996460}
-  nextLevelButton: {fileID: 868124373}
+  nextLevelButton: {fileID: 0}
 --- !u!114 &931958582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13106,7 +13106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dafda38502f8d49937bec239875f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOccupied: 1
+  isOccupied: 0
   towerPlacement: {fileID: 1912918106}
 --- !u!58 &1031698008
 CircleCollider2D:
@@ -13488,7 +13488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -513, y: 348}
+  m_AnchoredPosition: {x: -126, y: 191}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181832587

@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scene/Menu/HowToPlay.unity
     guid: 1031aff002c4c314589a38a164f658c5
   - enabled: 1
-    path: Assets/Scene/Menu/Setting.unity
-    guid: 308f014061804384abb8a0e8bdfd19cf
-  - enabled: 1
     path: Assets/Scene/Levels/Level1.unity
     guid: 3617b520f78e9de47b78d2ac5c4b6812
   - enabled: 1
@@ -22,5 +19,5 @@ EditorBuildSettings:
     guid: e8e8bbc6dac363e46ac3b4920fac7b85
   - enabled: 1
     path: Assets/Scene/Levels/Level3.unity
-    guid: 324f9c712399b3b49828914267ec8cfc
+    guid: eadfd3158d595f74cb9f5b99414ac6e2
   m_configObjects: {}
