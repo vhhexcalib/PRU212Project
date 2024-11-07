@@ -1,6 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +9,9 @@ public class GameManager : MonoBehaviour
     private int enemyCount = 0;
     private bool allWavesCompleted = false;
 
+    public bool isLastLevel = false;
+    public bool bossActive = false;
+
     // Tower placement control
     public int availableTowers = 1;
     private const int maxTowers = 11;
@@ -19,7 +20,6 @@ public class GameManager : MonoBehaviour
     public TowerSpotLeft towerPlacementText;
     public MineSpotLeft mineSpotLeft;
 
-    // Reference to AudioManagerScene
     public AudioManagerScene audioManager;
 
     private void Start()
@@ -55,7 +55,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("AudioManagerScene or SFXSource or enemydie clip is not assigned.");
         }
-        if (enemyCount <= 0 && allWavesCompleted && baseHealth.health > 0)
+        // On normal levels (not last level), check if all enemies are killed
+        if (!isLastLevel && enemyCount <= 0 && allWavesCompleted && baseHealth.health > 0)
+        {
+            LevelCompleted();
+        }
+
+        // On last level, check if all enemies and the boss are killed
+        if (isLastLevel && enemyCount <= 0 && !bossActive && allWavesCompleted && baseHealth.health > 0)
         {
             LevelCompleted();
         }
@@ -78,7 +85,14 @@ public class GameManager : MonoBehaviour
     {
         allWavesCompleted = true;
 
-        if (enemyCount <= 0 && baseHealth.health > 0)
+        // On normal levels (not last level), show victory once all enemies are killed
+        if (!isLastLevel && enemyCount <= 0 && baseHealth.health > 0)
+        {
+            LevelCompleted();
+        }
+
+        // On last level, show victory once all enemies (and the boss) are killed
+        if (isLastLevel && enemyCount <= 0 && !bossActive && baseHealth.health > 0)
         {
             LevelCompleted();
         }
@@ -94,10 +108,12 @@ public class GameManager : MonoBehaviour
     {
         return availableTowers > 0;
     }
+
     public bool CanPlaceMine()
     {
         return availableTowers > 0;
     }
+
     public void UseTower()
     {
         if (availableTowers > 0)
@@ -106,6 +122,7 @@ public class GameManager : MonoBehaviour
             UpdateTowerPlacementText();
         }
     }
+
     public void UseMine()
     {
         if (availableMines > 0)
@@ -114,6 +131,7 @@ public class GameManager : MonoBehaviour
             UpdateMinePlacementText();
         }
     }
+
     private void UpdateTowerPlacementText()
     {
         if (towerPlacementText != null && towerPlacementText.towerplacementText != null)
@@ -125,6 +143,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Tower Placement Text or TextMeshPro component is not assigned in the GameManager.");
         }
     }
+
     private void UpdateMinePlacementText()
     {
         if (mineSpotLeft != null && mineSpotLeft.mineplacementText != null)

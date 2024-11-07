@@ -37,8 +37,9 @@ public class EnemySpawner : MonoBehaviour
                 SpawnEnemy();
                 yield return new WaitForSeconds(spawnDelay);
             }
-            if (currentWave == maxWaves)
+            if (GameManager.instance.isLastLevel && currentWave == maxWaves)
             {
+                DisplayMessage("Spawning Boss...");
                 SpawnBoss();
             }
 
@@ -53,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
             GameManager.instance.WaveCompleted();
 
             enemiesInWave += 2;
+            IncreaseEnemyHealth(10);
             currentWave++;
 
             if (currentWave > maxWaves)
@@ -93,6 +95,7 @@ public class EnemySpawner : MonoBehaviour
         boss.SetActive(true);
 
         GameManager.instance.RegisterEnemy();
+        GameManager.instance.bossActive = true;
 
         CreepMovement creepMovement = boss.GetComponent<CreepMovement>();
         if (creepMovement != null && pathPoints.Length > 0)
@@ -107,6 +110,11 @@ public class EnemySpawner : MonoBehaviour
             DisplayMessage("Boss spawned!");
         }
     }
+    void OnBossDestroyed()
+    {
+        OnEnemyDestroyed();
+        GameManager.instance.bossActive = false;
+    }
 
     public void OnEnemyDestroyed()
     {
@@ -115,6 +123,17 @@ public class EnemySpawner : MonoBehaviour
         GameManager.instance.EnemyKilled();
 
         DisplayMessage($"Enemy destroyed. Remaining enemies: {remainingEnemies}");
+    }
+    void IncreaseEnemyHealth(int amount)
+    {
+        CreepHealth[] allEnemies = FindObjectsOfType<CreepHealth>();
+
+        foreach (var enemy in allEnemies)
+        {
+            enemy.maxHealth += amount;
+            enemy.currentHealth += amount;
+            DisplayMessage($"Increased {enemy.gameObject.name}'s health by {amount}. New Health: {enemy.maxHealth}");
+        }
     }
 
     void DisplayMessage(string message)

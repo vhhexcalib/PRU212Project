@@ -11187,7 +11187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -410, y: 243}
+  m_AnchoredPosition: {x: -803, y: 455}
   m_SizeDelta: {x: 2265.814, y: 723.2087}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &704613917
@@ -11221,8 +11221,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevelScreen: {fileID: 931958581}
   baseHealth: {fileID: 598896412}
+  isLastLevel: 0
   availableTowers: 1
+  availableMines: 0
   towerPlacementText: {fileID: 1181832587}
+  mineSpotLeft: {fileID: 0}
   audioManager: {fileID: 1433481687}
 --- !u!4 &704613919
 Transform:
@@ -11358,7 +11361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128, y: -254}
+  m_AnchoredPosition: {x: -524, y: -506}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763360035
@@ -12408,7 +12411,7 @@ MonoBehaviour:
   - {fileID: 1282314772}
   - {fileID: 497935625}
   startingEnemies: 2
-  timeBetweenWaves: 10
+  timeBetweenWaves: 5
   spawnDelay: 2
   maxWaves: 7
   debugDisplay: {fileID: 763360035}
@@ -13488,7 +13491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -126, y: 191}
+  m_AnchoredPosition: {x: -519, y: 350}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181832587
@@ -16346,7 +16349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1099, y: -439}
+  m_AnchoredPosition: {x: -946, y: -445}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1732996459
