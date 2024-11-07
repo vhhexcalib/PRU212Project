@@ -36,7 +36,7 @@ public class CreepHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Base"))
         {
             Debug.Log("Creep reached the base and died.");
-            OnDestroyed?.Invoke(); 
+            OnDestroyed?.Invoke();
             Destroy(gameObject);
         }
     }
