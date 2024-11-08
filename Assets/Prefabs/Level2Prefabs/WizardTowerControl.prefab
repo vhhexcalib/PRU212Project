@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 7
-  fireRate: 2
+  fireRate: 0.5
   Arrow: {fileID: 1953543856444458475, guid: 340947e4a9ed5f147929a344e0fa4334, type: 3}
   firePoint: {fileID: 5640174509722605930}
 --- !u!114 &3374036464070661980
