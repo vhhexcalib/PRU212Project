@@ -65,6 +65,19 @@ public class GameManager : MonoBehaviour
 
         CheckForLevelCompletion();
     }
+    public void BossKilled()
+    {
+        if (audioManager != null && audioManager.SFXSource != null && audioManager.enemydie != null)
+        {
+            audioManager.SFXSource.PlayOneShot(audioManager.enemydie);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManagerScene or SFXSource or enemydie clip is not assigned.");
+        }
+
+        CheckForLevelCompletion();
+    }
 
     public void WaveCompleted()
     {

@@ -45,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 DisplayMessage("Conditions met for spawning Boss.");
                 SpawnBoss();
+                GameManager.instance.bossActive = true;
             }
             else
             {
@@ -135,6 +136,7 @@ public class EnemySpawner : MonoBehaviour
     {
         OnEnemyDestroyed();
         GameManager.instance.bossActive = false;
+        GameManager.instance.BossKilled();
         DisplayMessage("Boss defeated!");
     }
 

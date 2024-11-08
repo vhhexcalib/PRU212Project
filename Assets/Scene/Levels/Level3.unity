@@ -10255,7 +10255,7 @@ RectTransform:
   m_GameObject: {fileID: 480660978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3959, y: 1.3959, z: 1.3959}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1263745206}
@@ -10263,7 +10263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -552.5, y: -314}
+  m_AnchoredPosition: {x: 826, y: -494}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480660980
@@ -11320,7 +11320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -803, y: 455}
+  m_AnchoredPosition: {x: -798, y: 447}
   m_SizeDelta: {x: 2265.814, y: 723.2087}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &704613917
@@ -12505,7 +12505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -504, y: 304}
+  m_AnchoredPosition: {x: 550, y: -441}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843414793
@@ -12925,7 +12925,7 @@ MonoBehaviour:
   - {fileID: 497935625}
   startingEnemies: 2
   timeBetweenWaves: 5
-  spawnDelay: 2
+  spawnDelay: 1.5
   maxWaves: 8
   levelIndex: 4
   debugDisplay: {fileID: 763360035}
