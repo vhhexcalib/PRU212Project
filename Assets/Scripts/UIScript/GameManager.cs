@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetLevel(int levelIndex)
+    {
+        isLastLevel = (levelIndex == 4);
+        Debug.Log("Setting level: " + levelIndex + ". Is last level: " + isLastLevel);
+    }
+
     public void RegisterEnemy()
     {
         enemyCount++;
@@ -47,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void EnemyKilled()
     {
         enemyCount--;
+
         if (audioManager != null && audioManager.SFXSource != null && audioManager.enemydie != null)
         {
             audioManager.SFXSource.PlayOneShot(audioManager.enemydie);
@@ -55,17 +62,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("AudioManagerScene or SFXSource or enemydie clip is not assigned.");
         }
-        // On normal levels (not last level), check if all enemies are killed
-        if (!isLastLevel && enemyCount <= 0 && allWavesCompleted && baseHealth.health > 0)
-        {
-            LevelCompleted();
-        }
 
-        // On last level, check if all enemies and the boss are killed
-        if (isLastLevel && enemyCount <= 0 && !bossActive && allWavesCompleted && baseHealth.health > 0)
-        {
-            LevelCompleted();
-        }
+        CheckForLevelCompletion();
     }
 
     public void WaveCompleted()
@@ -84,17 +82,24 @@ public class GameManager : MonoBehaviour
     public void SetAllWavesCompleted()
     {
         allWavesCompleted = true;
+        CheckForLevelCompletion();
+    }
 
-        // On normal levels (not last level), show victory once all enemies are killed
-        if (!isLastLevel && enemyCount <= 0 && baseHealth.health > 0)
+    private void CheckForLevelCompletion()
+    {
+        if (!isLastLevel)
         {
-            LevelCompleted();
+            if (enemyCount <= 0 && allWavesCompleted && baseHealth.health > 0)
+            {
+                LevelCompleted();
+            }
         }
-
-        // On last level, show victory once all enemies (and the boss) are killed
-        if (isLastLevel && enemyCount <= 0 && !bossActive && baseHealth.health > 0)
+        else
         {
-            LevelCompleted();
+            if (enemyCount <= 0 && !bossActive && allWavesCompleted && baseHealth.health > 0)
+            {
+                LevelCompleted();
+            }
         }
     }
 
@@ -111,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     public bool CanPlaceMine()
     {
-        return availableTowers > 0;
+        return availableMines > 0;
     }
 
     public void UseTower()

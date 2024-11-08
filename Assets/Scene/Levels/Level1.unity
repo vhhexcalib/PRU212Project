@@ -11207,6 +11207,7 @@ MonoBehaviour:
   nextLevelScreen: {fileID: 483225072}
   baseHealth: {fileID: 694738611}
   isLastLevel: 0
+  bossActive: 0
   availableTowers: 1
   availableMines: 0
   towerPlacementText: {fileID: 1479744227}
@@ -12670,7 +12671,8 @@ MonoBehaviour:
   startingEnemies: 2
   timeBetweenWaves: 5
   spawnDelay: 2
-  maxWaves: 2
+  maxWaves: 5
+  levelIndex: 2
   debugDisplay: {fileID: 381608501}
 --- !u!4 &848926510
 Transform:

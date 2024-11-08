@@ -4,22 +4,25 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy;
-    public GameObject Boss; 
+    public GameObject Boss;
     public Transform spawnPoint;
     public Transform[] pathPoints;
     public int startingEnemies = 2;
     public float timeBetweenWaves = 30f;
     public float spawnDelay = 5f;
     public int maxWaves = 5;
+    public int levelIndex;
 
     public DebugDisplay debugDisplay;
 
     private int currentWave = 1;
     private int enemiesInWave;
     private int remainingEnemies;
+    private int healthIncreasePerWave = 10;
 
     private void Start()
     {
+        GameManager.instance.SetLevel(levelIndex);
         enemiesInWave = startingEnemies;
         StartCoroutine(SpawnWave());
     }
@@ -34,13 +37,18 @@ public class EnemySpawner : MonoBehaviour
 
             for (int i = 0; i < enemiesInWave; i++)
             {
-                SpawnEnemy();
+                SpawnEnemy(healthIncreasePerWave * (currentWave - 1));
                 yield return new WaitForSeconds(spawnDelay);
             }
+
             if (GameManager.instance.isLastLevel && currentWave == maxWaves)
             {
-                DisplayMessage("Spawning Boss...");
+                DisplayMessage("Conditions met for spawning Boss.");
                 SpawnBoss();
+            }
+            else
+            {
+                DisplayMessage("Boss spawn conditions not met. Either not last level or not the final wave.");
             }
 
             DisplayMessage($"All enemies for wave {currentWave} spawned.");
@@ -54,7 +62,6 @@ public class EnemySpawner : MonoBehaviour
             GameManager.instance.WaveCompleted();
 
             enemiesInWave += 2;
-            IncreaseEnemyHealth(10);
             currentWave++;
 
             if (currentWave > maxWaves)
@@ -68,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(int extraHealth)
     {
         GameObject enemy = Instantiate(Enemy, spawnPoint.position, Quaternion.identity);
         enemy.SetActive(true);
@@ -84,13 +91,22 @@ public class EnemySpawner : MonoBehaviour
         CreepHealth creepHealth = enemy.GetComponent<CreepHealth>();
         if (creepHealth != null)
         {
+            creepHealth.maxHealth += extraHealth;
+            creepHealth.currentHealth = creepHealth.maxHealth;
             creepHealth.OnDestroyed += OnEnemyDestroyed;
-            DisplayMessage($"Enemy spawned. Remaining enemies: {remainingEnemies}");
+
+            DisplayMessage($"Enemy spawned with increased health: {creepHealth.maxHealth}");
         }
     }
 
     void SpawnBoss()
     {
+        if (Boss == null)
+        {
+            DisplayMessage("Boss prefab is not assigned!");
+            return;
+        }
+
         GameObject boss = Instantiate(Boss, spawnPoint.position, Quaternion.identity);
         boss.SetActive(true);
 
@@ -106,14 +122,20 @@ public class EnemySpawner : MonoBehaviour
         CreepHealth creepHealth = boss.GetComponent<CreepHealth>();
         if (creepHealth != null)
         {
-            creepHealth.OnDestroyed += OnEnemyDestroyed; 
-            DisplayMessage("Boss spawned!");
+            creepHealth.OnDestroyed += OnBossDestroyed;
+            DisplayMessage("Boss spawned successfully!");
+        }
+        else
+        {
+            DisplayMessage("Boss does not have CreepHealth component.");
         }
     }
+
     void OnBossDestroyed()
     {
         OnEnemyDestroyed();
         GameManager.instance.bossActive = false;
+        DisplayMessage("Boss defeated!");
     }
 
     public void OnEnemyDestroyed()
@@ -123,17 +145,6 @@ public class EnemySpawner : MonoBehaviour
         GameManager.instance.EnemyKilled();
 
         DisplayMessage($"Enemy destroyed. Remaining enemies: {remainingEnemies}");
-    }
-    void IncreaseEnemyHealth(int amount)
-    {
-        CreepHealth[] allEnemies = FindObjectsOfType<CreepHealth>();
-
-        foreach (var enemy in allEnemies)
-        {
-            enemy.maxHealth += amount;
-            enemy.currentHealth += amount;
-            DisplayMessage($"Increased {enemy.gameObject.name}'s health by {amount}. New Health: {enemy.maxHealth}");
-        }
     }
 
     void DisplayMessage(string message)

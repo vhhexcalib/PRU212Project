@@ -11222,6 +11222,7 @@ MonoBehaviour:
   nextLevelScreen: {fileID: 931958581}
   baseHealth: {fileID: 598896412}
   isLastLevel: 0
+  bossActive: 0
   availableTowers: 1
   availableMines: 0
   towerPlacementText: {fileID: 1181832587}
@@ -12413,7 +12414,8 @@ MonoBehaviour:
   startingEnemies: 2
   timeBetweenWaves: 5
   spawnDelay: 2
-  maxWaves: 7
+  maxWaves: 8
+  levelIndex: 4
   debugDisplay: {fileID: 763360035}
 --- !u!4 &890064877
 Transform:
@@ -13491,7 +13493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -519, y: 350}
+  m_AnchoredPosition: {x: 538, y: -504}
   m_SizeDelta: {x: 836.1028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181832587
