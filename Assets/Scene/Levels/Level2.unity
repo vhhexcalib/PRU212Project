@@ -19572,6 +19572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landmine
       objectReference: {fileID: 0}
+    - target: {fileID: 5191372508403908514, guid: d8feccbaf2f6b4348af51a37ce4a98d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7725060748580985932, guid: d8feccbaf2f6b4348af51a37ce4a98d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.45
@@ -19611,6 +19615,14 @@ PrefabInstance:
     - target: {fileID: 7725060748580985932, guid: d8feccbaf2f6b4348af51a37ce4a98d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337905084613393866, guid: d8feccbaf2f6b4348af51a37ce4a98d8, type: 3}
+      propertyPath: explosionDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337905084613393866, guid: d8feccbaf2f6b4348af51a37ce4a98d8, type: 3}
+      propertyPath: explosionRadius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
